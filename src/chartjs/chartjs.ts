@@ -2,19 +2,9 @@ import Chart from 'chart.js/auto'
 import austrianCities from './data/austrian-cities.js';
 
 export async function createChart({createWithExtraStuff = true}) {
-    // const data = [
-    //     {year: 2010, count: 10},
-    //     {year: 2011, count: 20},
-    //     {year: 2012, count: 15},
-    //     {year: 2013, count: 25},
-    //     {year: 2014, count: 22},
-    //     {year: 2015, count: 30},
-    //     {year: 2016, count: 28},
-    // ];
     const data = austrianCities.cities.map((city, index) => {
         return {city, population: austrianCities.populations[index]}
     })
-
     const config = createWithExtraStuff ?
         {
             type: 'bar' as const,
@@ -22,7 +12,7 @@ export async function createChart({createWithExtraStuff = true}) {
                 labels: data.map(row => row.city),
                 datasets: [
                     {
-                        label: 'Acquisitions by year',
+                        label: 'Population of Austrian Cities',
                         data: data.map(row => row.population)
                     }
                 ]
@@ -61,12 +51,12 @@ export async function createChart({createWithExtraStuff = true}) {
                 labels: data.map(row => row.year),
                 datasets: [
                     {
-                        label: 'Acquisitions by year',
+                        label: 'Population of Austrian Cities',
                         data: data.map(row => row.count)
                     }
                 ]
             },
             responsive: true
         }
-    new Chart(document.getElementById('acquisitions') as HTMLCanvasElement, config);
+    new Chart(document.getElementById('chart') as HTMLCanvasElement, config);
 }

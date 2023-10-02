@@ -31,4 +31,13 @@ export function chooseResponsiveData(element, data) {
       data.labels.relativePositions = {x: 1, y: 0.5}
       break
   }
+
+  switch (index) {
+    case 0:
+    case 1:
+      data.title = 'Population of Austrian Cities';
+      break
+    default:
+      data.title = 'Population';
+  }
 }

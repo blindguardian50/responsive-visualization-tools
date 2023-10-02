@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.heading {
+  font-size: 2rem;
+  text-align: center;
+  margin: 0 auto 4rem;
+}
+
+.tools {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(min(23rem, 100%), 1fr));
+  .tool {
+    width: 100%;
+    padding: 1rem;
+    background: beige;
+    img {
+      max-width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    a {
+      display: block;
+      text-align: center;
+    }
+  }
+}
