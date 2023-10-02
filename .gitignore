@@ -1,0 +1,6 @@
+.parcel-cache
+dist
+node_modules
+scripts
+.idea
+package-lock.json

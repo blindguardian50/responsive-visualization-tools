@@ -1,0 +1,24 @@
+{
+  "name": "resp_tech_seminar_paper_tools",
+  "version": "1.0.0",
+  "description": "Testing of Tools discussed in seminar paper about responsive visualization",
+  "source": "src/index.html",
+  "scripts": {
+    "dev": "./scripts/preServe.sh && npx parcel",
+    "build": "npx parcel build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Egger",
+  "license": "ISC",
+  "dependencies": {
+    "chart.js": "^4.3.3",
+    "chartist": "^1.3.0",
+    "highcharts": "^11.1.0",
+    "plotly.js-dist": "^2.25.2"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.9.3",
+    "buffer": "^6.0.3",
+    "parcel": "^2.9.3"
+  }
+}
