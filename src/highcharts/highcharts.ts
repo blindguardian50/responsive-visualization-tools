@@ -1,28 +1,11 @@
-import * as Highcharts from 'highcharts';
 import austrianCities from './data/austrian-cities.js';
-
-
-// import Chart from 'highcharts/es-modules/Core/Chart/Chart.js';
-// import BarSeries from 'highcharts/es-modules/Series/Bar/BarSeries.js';
-
-
-// Alternatively, this is how to load Highcharts Stock. The Maps and Gantt
-// packages are similar.
-// import Highcharts from 'highcharts/highstock';
-
-// // Load the exporting module.
-// import * as Exporting from 'highcharts/modules/exporting';
-// // Initialize exporting module.
-// Exporting(Highcharts);
-
-// // Initialize the bar chart module
-// import HighchartsSeries from 'highcharts/modules/bar';
-// HighchartsSeries(Highcharts);
+import { chart, Options } from 'highcharts';
 
 export function createChart() {
-    return Highcharts.chart('chart', {
+    const renderTo  = 'chart'
+    const options: Options = {
         chart: {
-            type: 'bar'
+            type: 'column'
         },
         title: {
             text: 'Population of Austrian Cities',
@@ -65,24 +48,14 @@ export function createChart() {
                 groupPadding: 0.1
             }
         },
-        // legend: {
-        //     layout: 'vertical',
-        //     align: 'right',
-        //     verticalAlign: 'top',
-        //     x: -40,
-        //     y: 80,
-        //     floating: true,
-        //     borderWidth: 1,
-        //     backgroundColor:
-        //         Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-        //     shadow: true
-        // },
         credits: {
             enabled: false
         },
         series: [{
-                name: 'Cities',
-                data: austrianCities.populations
+            type: 'column', // same as as SeriesBarOptions
+            name: 'Cities',
+            data: austrianCities.populations
         }]
-    });
+    }
+    return chart(renderTo, options);
 }
