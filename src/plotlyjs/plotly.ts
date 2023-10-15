@@ -2,22 +2,38 @@ import Plotly from 'plotly.js-dist'
 import austrianCities from './data/austrian-cities'
 
 export function createChart() {
-    const trace1 = {
+    const barData = {
         type: 'bar',
         x: austrianCities.cities, // [1, 2, 3, 4],
         y: austrianCities.populations, //[5, 10, 2, 8],
+        text: austrianCities.populations, //[5, 10, 2, 8],
+        textposition: 'outside',
         marker: {
-            color: '#C8A2C8',
+            color: '#78b4c6',
             line: {
                 width: 2.5
             }
         }
     };
 
-    const data = [trace1];
+    const data = [barData];
     const layout = {
         title: 'Population of Austrian Cities',
-        font: {size: 18}
+        font: {size: 18},
+        xaxis: {
+            title: 'City',
+        },
+        yaxis: {
+            tick0: 0,
+            tickmode: 'linear',
+            dtick: 200000,
+            ntick: 10,
+            tickformat: '.2s',
+            title: 'Population',
+        },
+        margin: {
+            b: 150, // Increase the bottom margin to make room for the x-axis tick labels and title
+        },
     };
 
     const config = {responsive: true}

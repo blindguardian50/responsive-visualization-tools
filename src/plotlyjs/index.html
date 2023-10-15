@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -6,10 +6,29 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Plotly.js Bar Chart</title>
+    <style>
+        li {
+            line-height: 1.5em
+        }
+        ul {
+            max-width: 46.875rem;
+        }
+        #chart {
+            position: relative;
+            height:75vh;
+            width:100%;
+        }
+    </style>
 </head>
 <body>
-
-<div id="chart" style="width:80%; aspect-ratio: 2;"></div>
+<h1>Plotly.js: Bar Chart</h1>
+<div id="chart"></div>
+<h1>Developer Experience</h1>
+<ul>
+    <li>There are no types provided by Plotly.js. The best approach is to ask ChatGPT how certain operations can be done
+        and then go visit the docs for further information about the properties, if necessary.</li>
+    <li>Swapping of x and y-axis is possible, but requires to manually swap all configuration options.</li>
+</ul>
 <script type="module">
     import {createChart} from './plotly'
     createChart()

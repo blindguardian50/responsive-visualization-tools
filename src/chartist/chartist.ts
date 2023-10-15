@@ -1,33 +1,33 @@
 import { BarChart } from 'chartist';
 import austrianCities from './data/austrian-cities'
-
 export function createChart() {
-    // for (let i = 1; i < 4; i++) {
-    //     new BarChart('#chart' + i, {
-    //         labels: austrianCities.cities, //['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
-    //         series: [austrianCities.populations] //[1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
-    //     }, {
-    //         // high: 10,
-    //         // low: -10,
-    //         axisX: {
-    //             // labelInterpolationFnc: (value, index) => (index % 2 === 0 ? value : null)
-    //         }
-    //     });
-    //
-    // }
+    const formatter = (value: string) => {
+        if (Number(value) > 999999) {
+            const text = value.toString()
+            const shortened = text.slice(0, text.length - 6) + '.' + text[text.length - 6]
+            return shortened + 'M'
+        } else if (Number(value) > 999) {
+            const text = value.toString()
+            const shortened = text.slice(0, text.length - 3) // + '.' + text[text.length - 6]
+            return shortened + 'K'
+        }
+        return value;
+    }
+
     return new BarChart('#chart', {
-        labels: austrianCities.cities, //['W1', 'W2', 'W3', 'W4', 'W5', 'W6', 'W7', 'W8', 'W9', 'W10'],
-        series: [austrianCities.populations] //[1, 2, 4, 8, 6, -2, -1, -4, -6, -2]
+        labels: austrianCities.cities,
+        series: [austrianCities.populations]
     }, {
-        // high: 10,
-        // low: -10,
         axisX: {
             // labelInterpolationFnc: (value, index) => (index % 2 === 0 ? value : null)
         },
         axisY: {
-
+            labelInterpolationFnc: formatter
         },
-        chartPadding: { left: 30, top: 20, bottom: 20 } //Necessary for example data, without it labels get cut off
+        chartPadding: { left: 30, top: 20, bottom: 20 }, //Necessary for example data, without it labels get cut off
+        // reverseData: true,
+        // horizontalBars: true,
+        plugins: []
     });
 }
 

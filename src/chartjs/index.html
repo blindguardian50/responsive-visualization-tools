@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
@@ -5,14 +6,57 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Chart.js Bar Chart</title>
+    <style>
+        li {
+            line-height: 1.5em
+        }
+        ul {
+            max-width: 46.875rem;
+        }
+        #canvas-wrapper {
+            position: relative;
+            height:75vh;
+            width:100%;
+        }
+    </style>
 </head>
 <body>
-
-<div id="canvas-wrapper" style="position: relative; height:40vh; width:80vw">
+<h1>Chart.js: Bar Chart</h1>
+<div id="canvas-wrapper">
     <canvas id="chart"></canvas>
 </div>
+<h1>Developer Experience</h1>
+<ul>
+    <li>Terms 'scale' and 'axis' are often used interchangeably in documentation.</li>
+    <li>Labels of x-axis (and y-axis?) can be specified both in scale object or in data object as 'labels'.
+        This may lead to confusion but the authors probably intended to accept as many configurations as possible
+    </li>
+    <li>Type Information is given and works correctly so far.
+        One has to define the config with type ChartConfiguration.
+    </li>
+    <li>The documentation does not mention information about all configuration options.
+        For instance, options 'maxRotation' and 'minRotation' are not mentioned.
+        However, the properties are listed in the API section of the chart.js website and type documentation is given.
+    </li>
+    <li>Axis Label rotation can be configured but seems to not work so well.
+        Apparently, some defaults are hard to overwrite. Also, the rotation starting point cannot be specified.
+    </li>
+    <li>Formatting numbers is basically possible, one has to provide a callback function for doing so.</li>
+    <li>Labeling the chart elements can be done via the 'chartjs-plugin-datalabels' plugin.</li>
+    <li>Swapping x and y-axis, in general, is possible but requires additional, effortful restructurings in code.</li>
+    <li>There are some troubles with responsiveness: This is due to the fact that chart.js differentiates between display
+        size and render size.
+        When providing specific options, the change of display size is detected and the render size adapted accordingly.
+        For this to work,the canvas
+        needs a container that is relatively positioned and dedicated to the chart canvas only.
+    </li>
+    <li>The research structure was most of the time: 1. search-in-docs, 2. search-in-types, 3. google, 4. ask chat gpt
+    </li>
+</ul>
+
 <script type="module">
     import {createChart} from './chartjs'
+
     createChart({createWithExtraStuff: true})
 </script>
 

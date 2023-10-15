@@ -1,7 +1,20 @@
 import austrianCities from './data/austrian-cities.js';
-import { chart, Options } from 'highcharts';
+import { chart, Options, AxisLabelsFormatterContextObject } from 'highcharts';
 
 export function createChart() {
+    const formatter = (context: AxisLabelsFormatterContextObject) => {
+        const value = context.value
+        if (Number(value) > 999999) {
+            const text = value.toString()
+            const shortened = text.slice(0, text.length - 6) + '.' + text[text.length - 6]
+            return shortened + 'M'
+        } else if (Number(value) > 999) {
+            const text = value.toString()
+            const shortened = text.slice(0, text.length - 3) // + '.' + text[text.length - 6]
+            return shortened + 'K'
+        }
+        return context.text;
+    }
     const renderTo  = 'chart'
     const options: Options = {
         chart: {
@@ -9,7 +22,7 @@ export function createChart() {
         },
         title: {
             text: 'Population of Austrian Cities',
-            align: 'left'
+            align: 'center'
         },
         subtitle: {
             text: 'Source: <a ' +
@@ -20,7 +33,11 @@ export function createChart() {
         xAxis: {
             categories: austrianCities.cities,
             title: {
-                text: null
+                text: 'City',
+                align: 'middle'
+            },
+            labels: {
+                autoRotation: [-10, -20, -30, -40, -50, -60, -70, -80, -90]
             },
             gridLineWidth: 1,
             lineWidth: 0
@@ -28,24 +45,29 @@ export function createChart() {
         yAxis: {
             min: 0,
             title: {
-                text: 'Population (millions)',
-                align: 'high'
+                text: 'Population',
+                align: 'middle'
             },
             labels: {
-                overflow: 'justify'
+                overflow: 'justify',
+                formatter
             },
             gridLineWidth: 0
+        },
+        legend: {
+            enabled: false
         },
         tooltip: {
             valueSuffix: ' millions'
         },
         plotOptions: {
-            bar: {
-                borderRadius: '50%',
+            column: {
+                borderRadius: '5%',
                 dataLabels: {
                     enabled: true
                 },
-                groupPadding: 0.1
+                groupPadding: 0.1,
+                color: '#78b4c6',
             }
         },
         credits: {
