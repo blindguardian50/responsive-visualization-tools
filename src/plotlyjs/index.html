@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Plotly.js Bar Chart</title>
     <style>
         li {
@@ -28,9 +28,16 @@
     <li>There are no types provided by Plotly.js. The best approach is to ask ChatGPT how certain operations can be done
         and then go visit the docs for further information about the properties, if necessary.</li>
     <li>Swapping of x and y-axis is possible, but requires to manually swap all configuration options.</li>
+    <li>During Development the bundle version of plotly.js could not be used with the package bundler parcel anymore.
+        The most likely reason for this behavior is a problem with es6 modules and plotly.js. However, the cdn link for
+        including plotly.js works when included via script tag into the dom.
+    </li>
 </ul>
+<script src="https://cdn.plot.ly/plotly-2.27.0.js"></script>
 <script type="module">
     import {createChart} from './plotly'
+
+    console.log("YO")
     createChart()
 </script>
 

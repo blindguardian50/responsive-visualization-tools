@@ -1,6 +1,8 @@
-import Plotly from 'plotly.js-dist'
+// @ts-ignore //breaks parcel
+// import Plotly from './bundle/plotly.js'
+// import Plotly from './bundle/plotly-basic.js'
 import austrianCities from './data/austrian-cities'
-
+//
 export function createChart() {
     const barData = {
         type: 'bar',
@@ -40,5 +42,6 @@ export function createChart() {
 
 
     const plot = document.getElementById('chart')
-    Plotly.newPlot(plot, data, layout, config);
+    //@ts-ignore
+    const chart = Plotly.newPlot(plot, data, layout, config);
 }
