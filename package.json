@@ -4,8 +4,11 @@
   "description": "Testing of Tools discussed in seminar paper about responsive visualization",
   "source": "src/index.html",
   "scripts": {
-    "dev": "./scripts/preServe.sh && npx parcel",
-    "build": "npx parcel build",
+    "clean": "run-script-os",
+    "clean:windows": "rmdir /s /q .parcel-cache",
+    "clean:default": "rm -r -f .parcel-cache",
+    "dev": "npm run clean && npx parcel",
+    "build": "npm run clean && npx parcel build src/index.html --no-source-maps",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "David Egger",
@@ -16,7 +19,8 @@
     "chartist-plugin-axistitle": "^0.0.7",
     "chartjs-plugin-datalabels": "^2.2.0",
     "highcharts": "^11.1.0",
-    "plotly.js": "2.26.0"
+    "plotly.js": "2.26.0",
+    "run-script-os": "^1.1.6"
   },
   "devDependencies": {
     "@parcel/optimizer-terser": "^2.10.2",

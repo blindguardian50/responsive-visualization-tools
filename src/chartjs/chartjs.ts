@@ -1,5 +1,8 @@
 import Chart, {ChartConfiguration} from 'chart.js/auto'
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+// import ChartDataLabels from 'chartjs-plugin-datalabels' // 'chartjs-plugin-datalabels';
+import ChartDataLabels from './chartjs-plugin-datalabels.js' //The esm bundle does not work in production,
+                                                             // which is also the reason the package
+                                                             // datalabels package does not work
 import austrianCities from './data/austrian-cities.js'
 
 //Global registration
@@ -98,45 +101,3 @@ export async function createChart({createWithExtraStuff = true}) {
     }
     new Chart(document.getElementById('chart') as HTMLCanvasElement, config);
 }
-
-
-//Chart Options for no interactions and animations:
-// {
-//     type: 'bar' as const,
-//     options: {
-//         animation: false as const,
-//         plugins: {
-//             legend: {
-//                 display: false
-//             },
-//             tooltip: {
-//                 enabled: false
-//             }
-//         },
-//         scales: {
-//             ticks: {
-//                 maxRotation: 0, // Initial rotation (horizontal)
-//                 minRotation: 0,
-//                 autoSkip: true,
-//                 autoSkipPadding: 15
-//             },
-//             grid: {
-//                 display: false
-//             },
-//             angleLines: {
-//                 display: true,
-//                 borderDash: [5, 5]
-//             }
-//         }
-//     },
-//     data: {
-//         labels: data.map(row => row.year),
-//         datasets: [
-//             {
-//                 label: 'Population of Austrian Cities',
-//                 data: data.map(row => row.count)
-//             }
-//         ]
-//     },
-//     responsive: true
-// }

@@ -42,7 +42,8 @@
         Apparently, some defaults are hard to overwrite. Also, the rotation starting point cannot be specified.
     </li>
     <li>Formatting numbers is basically possible, one has to provide a callback function for doing so.</li>
-    <li>Labeling the chart elements can be done via the 'chartjs-plugin-datalabels' plugin.</li>
+    <li>Labeling the chart elements can be done via the 'chartjs-plugin-datalabels' plugin. However, the plugin did not
+        work in production with the ES6 module. Therefore, a released bundle was included which worked also in production.</li>
     <li>Swapping x and y-axis, in general, is possible but requires additional, effortful restructurings in code.</li>
     <li>There are some troubles with responsiveness: This is due to the fact that chart.js differentiates between display
         size and render size.
