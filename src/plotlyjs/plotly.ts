@@ -3,7 +3,10 @@
 // import Plotly from './bundle/plotly-basic.js'
 import austrianCities from './data/austrian-cities'
 //
-export function createChart() {
+export function createChart(selector) {
+    const plot = document.querySelector(selector)
+    if (!plot) return
+
     const barData = {
         type: 'bar',
         x: austrianCities.cities, // [1, 2, 3, 4],
@@ -40,8 +43,6 @@ export function createChart() {
 
     const config = {responsive: true}
 
-
-    const plot = document.getElementById('chart')
     //@ts-ignore
     const chart = Plotly.newPlot(plot, data, layout, config);
 }

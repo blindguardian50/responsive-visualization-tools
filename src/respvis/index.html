@@ -11,6 +11,7 @@
 <body>
 <noscript>Please enable JavaScript!</noscript>
 <h1>Respvis: Bar Chart</h1>
+<output id="frame-rate"> </output>
 <div id="chart"> </div>
 
 <script type="module">
@@ -22,6 +23,9 @@
   import * as d3 from './libs/d3-7.6.0/d3.js'
   import data from './data/austrian-cities.js';
   import {chooseResponsiveData} from "./chooseResponsiveData.js";
+  import {measureFrameRate} from './lib/measureFrameRate'
+
+  measureFrameRate("#frame-rate")
 
   const tickOrientation = {
     bounds: [ {minWidth: '40rem'}, {minWidth: '15rem'} ],

@@ -1,6 +1,6 @@
 import { BarChart } from 'chartist';
 import austrianCities from './data/austrian-cities'
-export function createChart() {
+export function createChart(selector) {
     const formatter = (value: string) => {
         if (Number(value) > 999999) {
             const text = value.toString()
@@ -14,7 +14,7 @@ export function createChart() {
         return value;
     }
 
-    return new BarChart('#chart', {
+    return new BarChart(selector, {
         labels: austrianCities.cities,
         series: [austrianCities.populations]
     }, {

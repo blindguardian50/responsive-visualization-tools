@@ -1,7 +1,9 @@
 import austrianCities from './data/austrian-cities.js';
 import { chart, Options, AxisLabelsFormatterContextObject } from 'highcharts';
 
-export function createChart() {
+export function createChart(selector) {
+    const renderTo  = document.querySelector(selector)
+    if (!renderTo) return
     const formatter = (context: AxisLabelsFormatterContextObject) => {
         const value = context.value
         if (Number(value) > 999999) {
@@ -15,7 +17,6 @@ export function createChart() {
         }
         return context.text;
     }
-    const renderTo  = 'chart'
     const options: Options = {
         chart: {
             type: 'column'

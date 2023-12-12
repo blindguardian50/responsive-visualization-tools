@@ -22,6 +22,7 @@
 </head>
 <body>
 <h1>Highcharts: Bar Chart</h1>
+<output id="frame-rate"> </output>
 <div id="chart"></div>
 <h1>Developer Experience</h1>
 <ul>
@@ -31,7 +32,10 @@
 
 <script type="module">
     import {createChart} from './highcharts'
-    const chart = createChart()
+    import {measureFrameRate} from './lib/measureFrameRate'
+
+    measureFrameRate("#frame-rate")
+    const chart = createChart('#chart')
 </script>
 
 </body>

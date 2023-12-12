@@ -28,6 +28,7 @@
         #chart {
             width: 100%;
             flex: 1 1 100%;
+            container-type: inline-size;
         }
 
         #chart .ct-bar {
@@ -35,19 +36,19 @@
             stroke-width: calc(1rem + 3vw);
         }
 
-        @media screen and (min-width: 28.125rem) and (width < 46.875rem) {
+        @container (min-width: 28.125rem) and (width < 46.875rem) {
             #chart .ct-bar {
                 stroke-width: calc(1rem + 5vw);
             }
         }
 
-        @media screen and (min-width: 46.875rem) and (width < 62.5rem) {
+        @container (min-width: 46.875rem) and (width < 62.5rem) {
             #chart .ct-bar {
                 stroke-width: calc(1rem + 8vw);
             }
         }
 
-        @media screen and (min-width: 62.5rem) {
+        @container (min-width: 62.5rem) {
             #chart .ct-bar {
                 stroke-width: calc(1rem + 11vw);
             }
@@ -56,6 +57,7 @@
 </head>
 <body>
 <h1>Chartist: Bar Chart</h1>
+<output id="frame-rate"> </output>
 <div class="chart-container">
     <div class="chart-title">Population of Austrian cities</div>
     <div id="chart"></div>
@@ -77,8 +79,10 @@
 </ul>
 <script type="module">
     import {createChart} from './chartist'
+    import {measureFrameRate} from './lib/measureFrameRate'
 
-    const chart = createChart()
+    measureFrameRate("#frame-rate")
+    const chart = createChart('#chart')
 </script>
 
 </body>

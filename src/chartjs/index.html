@@ -22,6 +22,7 @@
 </head>
 <body>
 <h1>Chart.js: Bar Chart</h1>
+<output id="frame-rate"> </output>
 <div id="canvas-wrapper">
     <canvas id="chart"></canvas>
 </div>
@@ -57,8 +58,10 @@
 
 <script type="module">
     import {createChart} from './chartjs'
+    import {measureFrameRate} from './lib/measureFrameRate'
 
-    createChart({createWithExtraStuff: true})
+    measureFrameRate("#frame-rate")
+    createChart('#chart')
 </script>
 
 </body>

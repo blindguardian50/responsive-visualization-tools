@@ -8,7 +8,9 @@ import austrianCities from './data/austrian-cities.js'
 //Global registration
 //Chart.register(ChartDataLabels)
 
-export async function createChart({createWithExtraStuff = true}) {
+export async function createChart(selector) {
+    const element = document.querySelector(selector)
+    if (!element) return
     const data = austrianCities.cities.map((city, index) => {
         return {city, population: austrianCities.populations[index]}
     })
@@ -55,12 +57,9 @@ export async function createChart({createWithExtraStuff = true}) {
         plugins: [ChartDataLabels],
         options: {
             onResize(chart: Chart, size: { width: number; height: number }) {
-                if (size.width < 400) {
-                    chart.options.scales.x = populationScale
-                    chart.options.scales.y = cityScale
-                    chart.options.indexAxis = "y"
-                    // Additional options like rotation of axis ticks, bar labels are harder to adjust
-                }
+                chart.options.scales.x = size.width < 400 ? populationScale : cityScale
+                chart.options.scales.y = size.width < 400 ? cityScale : populationScale
+                chart.options.indexAxis = size.width < 400 ? 'y' : 'x'
             },
             indexAxis: 'x',  // flipchart: turn to y
             scales: {
@@ -99,5 +98,5 @@ export async function createChart({createWithExtraStuff = true}) {
             ]
         }
     }
-    new Chart(document.getElementById('chart') as HTMLCanvasElement, config);
+    new Chart(element as HTMLCanvasElement, config);
 }
